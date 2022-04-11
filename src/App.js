@@ -5,6 +5,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import HomeDocente from "./components/HomeDocente";
 import HomeAlumno from "./components/HomeAlumno";
+import Resultados from "./components/Resultados";
+import Examenes from "./components/Examenes";
 
 function App() {
 
@@ -64,10 +66,10 @@ function App() {
 
           if(array[i].tipoUsuario === 'Docente'){
             contadorDocente++;
-            setBienvenido('Bienvenido ' + array[i].tipoUsuario  + ' ' + array[i].nombre);
+            setBienvenido('!BIENVENIDO! ' + array[i].tipoUsuario  + ' ' + array[i].nombre);
           }else if(array[i].tipoUsuario === 'Alumno'){
             contadorAlumno++;
-            setBienvenido('Bienvenido ' + array[i].tipoUsuario  + ' ' + array[i].nombre);
+            setBienvenido('!BIENVENIDO! ' + array[i].tipoUsuario  + ' ' + array[i].nombre);
           }
         }else{
           contadorN++;
@@ -92,6 +94,8 @@ function App() {
         <Route path='/register' element={<Register addUserFirebase={addUserFirebase} notificacion={notificacion} />}></Route>
         <Route path='/homedocente' element={<HomeDocente bienvenido={bienvenido}/>}></Route>
         <Route path='/homealumno' element={<HomeAlumno bienvenido={bienvenido}/>}></Route>
+        <Route path='/examenes' element={<Examenes></Examenes>}></Route>
+        <Route path='/resultados' element={<Resultados></Resultados>}></Route>
       </Routes>
     </div>
   )

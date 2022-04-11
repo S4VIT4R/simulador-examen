@@ -2,7 +2,11 @@ import React from 'react'
 
 function HomeAlumno(props) {
   return (
-    <div>{props.bienvenido}</div>
+    <div>
+      <h1>
+        {props.bienvenido}
+      </h1>
+    </div>
   )
 }
 

@@ -7,7 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 function HomeAlumno(props) {
   return (
     <div className='w-full'>
-        <NavBarAlumno></NavBarAlumno>
+        <NavBarAlumno userName={props.userName}></NavBarAlumno>
       <Routes>
         <Route path='/homealumno' component={HomeAlumno}></Route>
         <Route path='/responderexamen' element={<ResponderExamen></ResponderExamen>} component={ResponderExamen}></Route>

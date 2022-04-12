@@ -1,10 +1,10 @@
 import React from 'react'
 import NavBar from './NavBar'
 
-function Resultados() {
+function Resultados(props) {
   return (
     <div className='w-full'>
-      <NavBar></NavBar>
+      <NavBar userName={props.userName}></NavBar>
       <h1 className='text-center font-bold mt-12'>Resultados</h1>
     </div>
   )

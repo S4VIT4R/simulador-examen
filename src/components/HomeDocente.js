@@ -7,7 +7,7 @@ import Examenes from './Examenes';
 function HomeDocente(props) {
   return (
     <div className='w-full'>
-        <NavBar></NavBar>
+        <NavBar userName={props.userName}></NavBar>
       <Routes>
         <Route path='/homedocente' component={HomeDocente}></Route>
         <Route path='/examenes' element={<Examenes></Examenes>} component={Examenes}></Route>

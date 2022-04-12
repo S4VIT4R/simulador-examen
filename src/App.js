@@ -13,6 +13,7 @@ import Editar from "./components/Editar";
 function App() {
 
   const [notificacion, setNotificacion] = useState();
+  const [userName, setUserName] = useState();
   const [notificacionSesion, setNotificacionSesion] = useState();
   const [bienvenido, setBienvenido] = useState();
   const navigate = useNavigate();
@@ -46,6 +47,7 @@ function App() {
             user
            });
            setBienvenido('!BIENVENIDO! ' + user.tipoUsuario  + ' ' + user.nombre);
+           setUserName(user.nombre);
            if(user.tipoUsuario === 'Docente'){
              navigate('/homedocente');
            }
@@ -76,8 +78,10 @@ function App() {
           if(array[i].tipoUsuario === 'Docente'){
             contadorDocente++;
             setBienvenido('!BIENVENIDO! ' + array[i].tipoUsuario  + ' ' + array[i].nombre);
+            setUserName(array[i].nombre);
           }else if(array[i].tipoUsuario === 'Alumno'){
             contadorAlumno++;
+            setUserName(array[i].nombre);
             setBienvenido('!BIENVENIDO! ' + array[i].tipoUsuario  + ' ' + array[i].nombre);
           }
         }else{
@@ -103,12 +107,12 @@ function App() {
       <Routes>
         <Route path='/' element={<Login validarLogin={validarLogin} notificacionSesion={notificacionSesion}/>}></Route>
         <Route path='/register' element={<Register addUserFirebase={addUserFirebase} notificacion={notificacion} setNotificacion={setNotificacion}/>}></Route>
-        <Route path='/homedocente' element={<HomeDocente bienvenido={bienvenido}/>}></Route>
-        <Route path='/homealumno' element={<HomeAlumno bienvenido={bienvenido}/>}></Route>
-        <Route path='/examenes' element={<Examenes></Examenes>}></Route>
-        <Route path='/resultados' element={<Resultados></Resultados>}></Route>
-        <Route path='/responderexamen' element={<ResponderExamen></ResponderExamen>}></Route>
-        <Route path='/editar' element={<Editar></Editar>}></Route>
+        <Route path='/homedocente' element={<HomeDocente userName={userName} bienvenido={bienvenido}/>}></Route>
+        <Route path='/homealumno' element={<HomeAlumno  userName={userName} bienvenido={bienvenido}/>}></Route>
+        <Route path='/examenes' element={<Examenes userName={userName}></Examenes>}></Route>
+        <Route path='/resultados' element={<Resultados userName={userName}></Resultados>}></Route>
+        <Route path='/responderexamen' element={<ResponderExamen userName={userName}></ResponderExamen>}></Route>
+        <Route path='/editar' element={<Editar userName={userName}></Editar>}></Route>
       </Routes>
     </div>
   )

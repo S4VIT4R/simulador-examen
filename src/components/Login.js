@@ -20,7 +20,6 @@ function Login(props) {
     const handleSubmit = e => {
       e.preventDefault()
       props.validarLogin(values)
-      
     }
 
     const handleNavigate = () => {
@@ -40,7 +39,7 @@ function Login(props) {
               </input>
             </div>
             <div className=' absolute  inset-y-0  left-2 flex items-center'>
-              <i class="material-icons">account_circle</i>
+              <i className='material-icons'>account_circle</i>
             </div>
           </div>
         </div>
@@ -54,7 +53,7 @@ function Login(props) {
               </input>
             </div>
             <div className=' absolute  inset-y-0  left-2 flex items-center'>
-              <i class="material-icons">verified_user</i>
+              <i className='material-icons'>verified_user</i>
             </div>
           </div>
       </div>

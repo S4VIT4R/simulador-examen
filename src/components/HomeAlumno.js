@@ -9,7 +9,7 @@ function HomeAlumno(props) {
     <div className='w-full'>
         <NavBarAlumno userName={props.userName}></NavBarAlumno>
       <Routes>
-        <Route path='/homealumno' component={HomeAlumno}></Route>
+        <Route path='/homealumno' element={<HomeAlumno></HomeAlumno>} component={HomeAlumno}></Route>
         <Route path='/responderexamen' element={<ResponderExamen></ResponderExamen>} component={ResponderExamen}></Route>
         <Route path='/editar' element={<Editar></Editar>} component={Editar}></Route>
       </Routes>

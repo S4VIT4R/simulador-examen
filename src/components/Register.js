@@ -25,6 +25,11 @@ function Register(props) {
       props.addUserFirebase(values)
     }
 
+    const handleClickSelect = e => {
+      const {name, value} = e.target;
+      setValues({...values, [name]:value})
+    }
+
     const handleNavigate = () => {
       props.setNotificacion('');
         navigate('/');
@@ -45,7 +50,7 @@ function Register(props) {
               </input>
             </div>
             <div className='absolute  inset-y-0  left-2 flex items-center'>
-              <i class="material-icons">person</i>
+              <i className='material-icons'>person</i>
             </div>
           </div>
         </div>
@@ -59,7 +64,7 @@ function Register(props) {
               </input>
             </div>
             <div className='absolute  inset-y-0  left-2 flex items-center'>
-              <i class="material-icons">account_circle</i>
+              <i className='material-icons'>account_circle</i>
             </div>
           </div>
         </div>
@@ -68,12 +73,13 @@ function Register(props) {
               <label htmlFor='tipoUsuario' className='block text-gray-700 text-sm font-fold mb-2'>Tipo de Usuario</label>
           <div className='relative rounded shadow-sm'>
             <div>
-              <input type='text' name='tipoUsuario' placeholder='Docente o Alumno'
-              className='shadow appearence-none border rounded w-full py-2 px-4.5 pr-3 pl-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' onChange={handleInputChange}>
-              </input>
+              <select name='tipoUsuario' id='tipoUsuario' onClick={handleClickSelect} className='shadow appearence-none border rounded w-full py-2 px-4.5 pr-3 pl-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'>
+                <option value='Docente'>Docente</option>
+                <option value='Alumno'>Alumno</option>
+              </select>
             </div>
             <div className='absolute  inset-y-0  left-2 flex items-center'>
-              <i class="material-icons">group</i>
+              <i className='material-icons'>group</i>
             </div>
           </div>
         </div>
@@ -87,7 +93,7 @@ function Register(props) {
               </input>
             </div>
             <div className='absolute  inset-y-0  left-2 flex items-center'>
-              <i class="material-icons">verified_user</i>
+              <i className='material-icons'>verified_user</i>
             </div>
           </div>
         </div>

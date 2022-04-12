@@ -26,6 +26,7 @@ function Register(props) {
     }
 
     const handleNavigate = () => {
+      props.setNotificacion('');
         navigate('/');
     }
 

@@ -5,7 +5,7 @@ function Resultados() {
   return (
     <div className='w-full'>
       <NavBar></NavBar>
-      <h1>Resultados</h1>
+      <h1 className='text-center font-bold mt-12'>Resultados</h1>
     </div>
   )
 }

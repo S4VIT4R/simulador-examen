@@ -7,8 +7,9 @@ function NavBarAlumno() {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
                 <Link to='/homealumno'>
-                    <img src='./user3.png' width='40'></img>
+                    <img src='./home1.png' width='40'></img>
                 </Link>
+                <label className='text-white mt-1 mx-1'>Home</label>
                 <button button clclassNameass="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
@@ -24,8 +25,9 @@ function NavBarAlumno() {
                             </li>
                         </ul>
                     </div>
+                <label className='text-white mx-2'>Cerrar Sesión</label>
                 <Link to='/'>
-                    <img src='./logout2.png' width='40'></img>
+                    <img src='./logout1.png' width='40'></img>
                 </Link>
             </div>
         </nav>

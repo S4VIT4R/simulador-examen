@@ -45,7 +45,14 @@ function App() {
           await addDocs(collections(db, "Usuarios"), {
             user
            });
-           setNotificacion(user.tipoUsuario + ' registrado con exito')
+           setBienvenido('!BIENVENIDO! ' + user.tipoUsuario  + ' ' + user.nombre);
+           if(user.tipoUsuario === 'Docente'){
+             navigate('/homedocente');
+           }
+
+           if(user.tipoUsuario === 'Alumno'){
+             navigate('/homealumno');
+           }
         } catch (error) {
         }
       }
@@ -80,8 +87,10 @@ function App() {
 
       if(contadorDocente>0){
        navigate('/homedocente');
+       setNotificacionSesion('');
       }else if(contadorAlumno>0){
         navigate('/homealumno');
+        setNotificacion('');
       }else if(contadorN>0){
         setNotificacionSesion('Usuario y contraseña incorrectos');
         navigate('/');
@@ -93,7 +102,7 @@ function App() {
     <div className='bg-slate-300 h-screen text-black flex'>
       <Routes>
         <Route path='/' element={<Login validarLogin={validarLogin} notificacionSesion={notificacionSesion}/>}></Route>
-        <Route path='/register' element={<Register addUserFirebase={addUserFirebase} notificacion={notificacion} />}></Route>
+        <Route path='/register' element={<Register addUserFirebase={addUserFirebase} notificacion={notificacion} setNotificacion={setNotificacion}/>}></Route>
         <Route path='/homedocente' element={<HomeDocente bienvenido={bienvenido}/>}></Route>
         <Route path='/homealumno' element={<HomeAlumno bienvenido={bienvenido}/>}></Route>
         <Route path='/examenes' element={<Examenes></Examenes>}></Route>

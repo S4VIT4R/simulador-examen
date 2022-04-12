@@ -5,7 +5,7 @@ function ResponderExamen() {
   return (
     <div className='w-full'>
     <NavBarAlumno></NavBarAlumno>
-    <h1>Examenes Disponibles</h1>
+    <h1 className='text-center font-bold mt-12'>Examenes Disponibles</h1>
   </div> 
   )
 }

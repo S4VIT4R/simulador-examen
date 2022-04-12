@@ -7,6 +7,8 @@ import HomeDocente from "./components/HomeDocente";
 import HomeAlumno from "./components/HomeAlumno";
 import Resultados from "./components/Resultados";
 import Examenes from "./components/Examenes";
+import ResponderExamen from "./components/ResponderExamen";
+import Editar from "./components/Editar";
 
 function App() {
 
@@ -96,6 +98,8 @@ function App() {
         <Route path='/homealumno' element={<HomeAlumno bienvenido={bienvenido}/>}></Route>
         <Route path='/examenes' element={<Examenes></Examenes>}></Route>
         <Route path='/resultados' element={<Resultados></Resultados>}></Route>
+        <Route path='/responderexamen' element={<ResponderExamen></ResponderExamen>}></Route>
+        <Route path='/editar' element={<Editar></Editar>}></Route>
       </Routes>
     </div>
   )

@@ -10,9 +10,7 @@ import Examenes from "./components/Examenes";
 import ResponderExamen from "./components/ResponderExamen";
 import Editar from "./components/Editar";
 import GenerarExamen from "./components/GenerarExamen";
-
 //VERIFICAR CAMBIOS
-
 function App() {
 
 
@@ -105,6 +103,7 @@ function App() {
       }
   }
 
+  
 
   return (
     <div className='bg-slate-300 h-screen text-black flex'>

@@ -3,35 +3,16 @@ import CardExamenes from './CardExamenes'
 import NavBarAlumno from './NavBarAlumno'
 import {db, collections, getDoc} from "../firebase";
   
-      const preguntas = [];
-      const datosExamen = [];
-      const datosCompletos = [];
-      const recuperar = async() => {
-        
-      const querySnapshot = await getDoc(collections(db, "Examenes"));
-              querySnapshot.forEach((doc) => {
-              datosCompletos.push(doc.data());
-              
-      });
-        console.log(datosCompletos);
-      
+const preguntas = [];
+const datosExamen = [];
+const datosCompletos = [];
+// var titulo = "";
+// var profesor = "";
 
-        datosExamen.push(datosCompletos[0].examen[0]);
-        console.log(datosCompletos[0].examen[0].title)
-
-        preguntas.push(datosCompletos[0].examen[1]);
-        preguntas.push(datosCompletos[0].examen[2]);
-        preguntas.push(datosCompletos[0].examen[3]);
-      
-
-        console.log(datosExamen)
-      }
-
-      window.onload = recuperar();
 
 function ResponderExamen(props) {
-  
-
+  console.log(datosExamen);
+  window.onload = recuperar();
   return (
     <div className='w-full'>
     <NavBarAlumno userName={props.userName}></NavBarAlumno>
@@ -39,14 +20,46 @@ function ResponderExamen(props) {
       <div className='border border-2px h-9 bg-white'>
         <label className='font-serif ml-2 text-xl'>Exámenes Disponibles</label>
       </div>
+
       <CardExamenes 
-      title='Examen 1'
+      title={datosExamen[0].title}
       imageUrl='https://i.pinimg.com/originals/49/c8/e4/49c8e403cd1929e9e7b02126824ff831.jpg'
-      body='hhhhhhhhh'
+      body={datosExamen[0].usuario}
     />
     </div>
   </div> 
   )
+
 }
+
+export const recuperar = async() => {
+  
+const querySnapshot = await getDoc(collections(db, "Examenes"));
+        querySnapshot.forEach((doc) => {
+        datosCompletos.push(doc.data());
+        
+});
+  //console.log(datosCompletos);
+
+  // titulo=datosCompletos[0].examen[0].title;
+
+  // profesor=datosCompletos[0].examen[0].usuario;
+  datosExamen.push(datosCompletos[0].examen[0]);
+  
+  // console.log(datosCompletos[0].examen[0].title)
+
+  preguntas.push(datosCompletos[0].examen[1]);
+  preguntas.push(datosCompletos[0].examen[2]);
+  preguntas.push(datosCompletos[0].examen[3]);
+
+  console.log(datosExamen[0])
+}
+
+ window.onbeforeunload = function(e) {
+// window.location='/homealumno'
+   return recuperar();
+ }
+window.onload = recuperar();
+
 
 export default ResponderExamen

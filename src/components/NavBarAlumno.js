@@ -1,7 +1,13 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 
+
+
 function NavBarAlumno(props) {
+
+    
+
+
   return (
     <div>
         <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
@@ -18,7 +24,7 @@ function NavBarAlumno(props) {
                                 <Link className='nav-link mx-6 text-white' to='/homealumno'>Inicio</Link>
                             </li>
                             <li className='nav-item'>
-                                <Link className='nav-link mx-6 text-white' to='/responderexamen'>Examenes</Link>
+                                <Link className='nav-link mx-6 text-white' to='/responderexamen' >Examenes</Link>
                             </li>
                             <li className='nav-item'>
                                 <Link className='nav-link text-white' to='/editar'>Editar</Link>

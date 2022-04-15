@@ -9,10 +9,13 @@ import Resultados from "./components/Resultados";
 import Examenes from "./components/Examenes";
 import ResponderExamen from "./components/ResponderExamen";
 import Editar from "./components/Editar";
+import GenerarExamen from "./components/GenerarExamen";
 
 //VERIFICAR CAMBIOS
 
 function App() {
+
+
 
   const [notificacion, setNotificacion] = useState();
   const [userName, setUserName] = useState();
@@ -95,7 +98,7 @@ function App() {
        setNotificacionSesion('');
       }else if(contadorAlumno>0){
         navigate('/homealumno');
-        setNotificacion('');
+        setNotificacionSesion('');
       }else if(contadorN>0){
         setNotificacionSesion('Usuario y contraseña incorrectos');
         navigate('/');
@@ -114,6 +117,7 @@ function App() {
           <Route path='/resultados' element={<Resultados userName={userName}></Resultados>}></Route>
           <Route path='/responderexamen' element={<ResponderExamen userName={userName}></ResponderExamen>}></Route>
           <Route path='/editar' element={<Editar userName={userName}></Editar>}></Route>
+          <Route path='/generarExamen' element={<GenerarExamen userName={userName}/>}></Route>
       </Routes>
     </div>
   )

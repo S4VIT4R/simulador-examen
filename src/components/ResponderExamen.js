@@ -8,9 +8,8 @@ import Preguntas from './Preguntas';
 var datosExamen = [];
 var credencialesExamen = [];
 var datosCompletos = [];
-var arrays = [];
-// var titulo = "";
-// var profesor = "";
+export var arrays = [];
+export var preguntas = [];
 
 
 function ResponderExamen(props) {
@@ -74,7 +73,6 @@ const querySnapshot = await getDoc(collections(db, "Examenes"));
   // preguntas.push(datosCompletos[0].examen[3]);
   console.log(datosExamen);
   console.log(arrays);
-
 }
 
  

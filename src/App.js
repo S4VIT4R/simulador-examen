@@ -10,6 +10,7 @@ import Examenes from "./components/Examenes";
 import ResponderExamen from "./components/ResponderExamen";
 import Editar from "./components/Editar";
 import GenerarExamen from "./components/GenerarExamen";
+import Preguntas from "./components/Preguntas";
 //VERIFICAR CAMBIOS
 function App() {
 
@@ -103,8 +104,6 @@ function App() {
       }
   }
 
-  
-
   return (
     <div className='bg-slate-300 h-screen text-black flex'>
       <Routes>
@@ -114,9 +113,10 @@ function App() {
           <Route path='/homealumno/*' element={<HomeAlumno userName={userName} bienvenido={bienvenido}/>}></Route>
           <Route path='/examenes' element={<Examenes userName={userName}></Examenes>}></Route>
           <Route path='/resultados' element={<Resultados userName={userName}></Resultados>}></Route>
-          <Route path='/responderexamen' element={<ResponderExamen userName={userName}></ResponderExamen>}></Route>
+          <Route path='/responderexamen/*' element={<ResponderExamen userName={userName}></ResponderExamen>}></Route>
           <Route path='/editar' element={<Editar userName={userName}></Editar>}></Route>
           <Route path='/generarExamen' element={<GenerarExamen userName={userName}/>}></Route>
+          <Route path='/preguntas' element={<Preguntas  userName={userName}/>}></Route>
       </Routes>
     </div>
   )

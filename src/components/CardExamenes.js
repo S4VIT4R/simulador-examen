@@ -1,7 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './CardExamenes.css'
 
-function CardExamenes({title,imageUrl,body}){
+export var idExamen;
+
+
+function CardExamenes({id,title,imageUrl,body}){
+    
+    const recuperar = () => {
+            idExamen = id;
+    }
+
     return(
         <div className="mb-3">
             <div className="card-container">
@@ -11,8 +20,7 @@ function CardExamenes({title,imageUrl,body}){
                     <div className="card-content">     
                         <div className="card-body"><p>{body}</p></div>
                     </div>
-
-                     <div className="btn"><button><a> Ver mas...</a></button></div>
+                     <div className="btn"><button><Link onClick={recuperar} to='/preguntas'>Ver examen</Link></button></div>
                 </div>
             </div>
         </div>

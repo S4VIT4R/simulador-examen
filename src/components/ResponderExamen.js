@@ -1,18 +1,42 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import CardExamenes from './CardExamenes'
 import NavBarAlumno from './NavBarAlumno'
 import {db, collections, getDoc} from "../firebase";
 import { Route, Routes } from 'react-router-dom';
 import Preguntas from './Preguntas';
-  
-var datosExamen = [];
-var credencialesExamen = [];
-var datosCompletos = [];
-export var arrays = [];
-export var preguntas = [];
+ 
 
 
 function ResponderExamen(props) {
+
+  const [lista, setLista] = useState([])
+
+  useEffect(() =>{
+    const obtenerDatos = async() =>{
+      try {
+        const datosCompletos = []
+        const querySnapshot = await getDoc(collections(db,'Examenes'))
+        querySnapshot.forEach((doc)=>{
+        datosCompletos.push({...doc.data(), id:doc.id})
+        })
+        
+        const examenes = []
+        for(var i=0; i<datosCompletos.length; i++){
+        var id = datosCompletos[i].id
+        var title = datosCompletos[i].examen[0].title
+        var usuario = datosCompletos[i].examen[0].usuario
+        examenes.push({id,title,usuario})
+      }
+
+      setLista(examenes);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    obtenerDatos()
+  },[lista])
+
+
   return (
     <div className='w-full'>
     <NavBarAlumno userName={props.userName}></NavBarAlumno>
@@ -25,7 +49,7 @@ function ResponderExamen(props) {
       </div>
       <div>
       {
-        arrays.map((examen) => {
+        lista.map((examen) => {
           return(
             <CardExamenes 
             key={examen.id}
@@ -43,39 +67,5 @@ function ResponderExamen(props) {
   )
 
 }
-
-export const recuperar = async() => {
-  
-const querySnapshot = await getDoc(collections(db, "Examenes"));
-        querySnapshot.forEach((doc) => {
-        datosCompletos.push(doc.data());
-        credencialesExamen.push(doc.id);
-});
-  //console.log(datosCompletos);
-
-  // titulo=datosCompletos[0].examen[0].title;
-  // profesor=datosCompletos[0].examen[0].usuario;
-  // console.log(datosCompletos.length);
-  var i;
-  for(i=0; i<datosCompletos.length; i++){
-    datosExamen.push(datosCompletos[i].examen[0]);
-    var id = credencialesExamen[i];
-    var title = datosExamen[i].title;
-    var usuario = datosExamen[i].usuario;
-    arrays.push({id,title,usuario});
-  }
-  // datosExamen.push(datosCompletos[0].examen[0]);
-  
-  // // console.log(datosCompletos[0].examen[0].title)
-
-  // preguntas.push(datosCompletos[0].examen[1]);
-  // preguntas.push(datosCompletos[0].examen[2]);
-  // preguntas.push(datosCompletos[0].examen[3]);
-  console.log(datosExamen);
-  console.log(arrays);
-}
-
- 
-window.onload = recuperar();
 
 export default ResponderExamen

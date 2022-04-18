@@ -5,10 +5,10 @@ import {Routes, Route} from "react-router-dom";
 import Examenes from './Examenes';
 
 function HomeDocente(props) {
-  var userName = props.userName;
+  
   return (
     <div className='w-full'>
-        <NavBar userName={userName}></NavBar>
+        <NavBar userName={props.userName}></NavBar>
       <Routes>
         <Route path='/homedocente' element={<HomeDocente></HomeDocente>} component={HomeDocente}></Route>
         <Route path='/examenes/*' element={<Examenes></Examenes>} component={Examenes}></Route>

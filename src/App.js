@@ -12,6 +12,9 @@ import Editar from "./components/Editar";
 import GenerarExamen from "./components/GenerarExamen";
 import Preguntas from "./components/Preguntas";
 //VERIFICAR CAMBIOS
+
+export var name = '';
+
 function App() {
 
 
@@ -52,6 +55,7 @@ function App() {
            });
            setBienvenido('!BIENVENIDO! ' + user.tipoUsuario  + ' ' + user.nombre);
            setUserName(user.nombre);
+           name = user.nombre;
            if(user.tipoUsuario === 'Docente'){
              navigate('/homedocente');
            }
@@ -82,9 +86,11 @@ function App() {
             contadorDocente++;
             setBienvenido('!BIENVENIDO! ' + array[i].tipoUsuario  + ' ' + array[i].nombre);
             setUserName(array[i].nombre);
+            name = array[i].nombre;
           }else if(array[i].tipoUsuario === 'Alumno'){
             contadorAlumno++;
             setUserName(array[i].nombre);
+            name = array[i].nombre;
             setBienvenido('!BIENVENIDO! ' + array[i].tipoUsuario  + ' ' + array[i].nombre);
           }
         }else{
@@ -111,7 +117,7 @@ function App() {
           <Route path='/register' element={<Register addUserFirebase={addUserFirebase} notificacion={notificacion} setNotificacion={setNotificacion}/>}></Route>
           <Route path='/homedocente/*' element={<HomeDocente userName={userName} bienvenido={bienvenido}/>}></Route>
           <Route path='/homealumno/*' element={<HomeAlumno userName={userName} bienvenido={bienvenido}/>}></Route>
-          <Route path='/examenes' element={<Examenes userName={userName}></Examenes>}></Route>
+          <Route path='/examenes/*' element={<Examenes userName={userName}></Examenes>}></Route>
           <Route path='/resultados' element={<Resultados userName={userName}></Resultados>}></Route>
           <Route path='/responderexamen/*' element={<ResponderExamen userName={userName}></ResponderExamen>}></Route>
           <Route path='/editar' element={<Editar userName={userName}></Editar>}></Route>

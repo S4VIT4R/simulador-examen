@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './GenerarExamen.css';
 import {useNavigate} from "react-router-dom";
-import {db, collections, addDocs, getDoc} from "../firebase";
+import {db, collections, addDocs} from "../firebase";
 
 function limpiar(){
  document.getElementById("pregunta").value="";
@@ -11,7 +11,7 @@ function limpiar(){
  document.getElementById("correcta").value="";
 }
 var contador = 0;
-const examen = [
+var examen = [
         
 ]
 
@@ -55,7 +55,7 @@ function GenerarExamen(props) {
     //   console.log(preguntas);
     //   console.log('Pregunta #1');
     //   console.log(preguntas[0].pregunta);
-
+      examen = []
       contador = 0;
       navigate('/examenes');      
     }

@@ -2,14 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './CardExamenes.css'
 
-export var idExamen;
+export var idExamen = '';
+export var titleExa = ''
+
 
 
 function CardExamenes({id,title,imageUrl,body}){
     
-    const recuperar = () => {
-            idExamen = id;
+    const imprimir = () =>{
+        idExamen = id;
+        titleExa = title;
+        console.log(id);
     }
+
 
     return(
         <div className="mb-3">
@@ -20,7 +25,7 @@ function CardExamenes({id,title,imageUrl,body}){
                     <div className="card-content">     
                         <div className="card-body"><p>{body}</p></div>
                     </div>
-                     <div className="btn"><button><Link onClick={recuperar} to='/preguntas'>Ver examen</Link></button></div>
+                     <div className="btn"><button onClick={imprimir}><Link to='/preguntas'>Ver examen</Link></button></div>
                 </div>
             </div>
         </div>

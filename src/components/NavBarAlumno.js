@@ -25,7 +25,7 @@ function NavBarAlumno(props) {
                                 <Link className='nav-link mx-6 text-white' to='/responderexamen' >Examenes</Link>
                             </li>
                             <li className='nav-item'>
-                                <Link className='nav-link text-white' to='/editar'>Editar</Link>
+                                <Link className='nav-link text-white' to='/editar'>Resultados</Link>
                             </li>
                         </ul>
                     </div>

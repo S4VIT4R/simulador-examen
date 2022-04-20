@@ -6,12 +6,12 @@ import { getFirestore, collection, addDoc, getDocs, doc } from 'firebase/firesto
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDqBPnBWNVuagtcVfFy9jconmFnf6_T90c",
-  authDomain: "simulador-examen-e422d.firebaseapp.com",
-  projectId: "simulador-examen-e422d",
-  storageBucket: "simulador-examen-e422d.appspot.com",
-  messagingSenderId: "31120484479",
-  appId: "1:31120484479:web:0f37286b5cb1e32b6eb74a"
+  apiKey: "AIzaSyB8un9ZceaoQgKY69CdM4jGm6Hx_7r4e7k",
+  authDomain: "simulador2-ae109.firebaseapp.com",
+  projectId: "simulador2-ae109",
+  storageBucket: "simulador2-ae109.appspot.com",
+  messagingSenderId: "364881267383",
+  appId: "1:364881267383:web:7d2702af99fd46ae569b32"
 };
 
 // Initialize Firebase

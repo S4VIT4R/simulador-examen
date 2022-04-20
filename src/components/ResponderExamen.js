@@ -4,6 +4,7 @@ import NavBarAlumno from './NavBarAlumno'
 import {db, collections, getDoc} from "../firebase";
 import { Route, Routes } from 'react-router-dom';
 import Preguntas from './Preguntas';
+import ExamenResultado from './ExamenResultado';
  
 
 
@@ -42,6 +43,7 @@ function ResponderExamen(props) {
     <NavBarAlumno userName={props.userName}></NavBarAlumno>
     <Routes>
       <Route path='/preguntas' element={<Preguntas></Preguntas>} component={Preguntas}></Route>
+      <Route path='/examenresultado' element={<ExamenResultado></ExamenResultado>} component={ExamenResultado}></Route>
     </Routes>
     <div className='bg-pastel-50 w-3/4 h-3/4 m-auto mt-5 shadow rounded'>
       <div className='border border-2px h-9 bg-white'>

@@ -3,7 +3,7 @@ import {idExamen, titleExa} from "./CardExamenes";
 import {useNavigate} from "react-router-dom";
 import {db, collections, getDoc} from "../firebase";
 
-export var listaRespuestas = []
+export var cantidadCorrectas = ''
 
 function Preguntas(props) {
     
@@ -33,22 +33,33 @@ function Preguntas(props) {
 
                 const pregunta = []
                 for(var i=0; i<datosCompletos.length; i++){
-                        var longitud = datosCompletos[i].examen.length;
-                        // console.log(longitud)
+                    var longitud = datosCompletos[i].examen.length
                         for(var x=1; x < longitud; x++){
                             pregunta.push(datosCompletos[i].examen[x])
                         }
                 }
 
-                setPreguntas(pregunta);
+                for (let i = pregunta.length - 1; i > 0; i--) {
+                    let indiceAleatorio = Math.floor(Math.random() * (i + 1));
+                    let temporal = pregunta[i];
+                    pregunta[i] = pregunta[indiceAleatorio];
+                    pregunta[indiceAleatorio] = temporal;
+                }
+
+                const revueltas = []
+                for(var z =0; z<5; z++){
+                    revueltas.push(pregunta[z]);
+                }
+
+                setPreguntas(revueltas);
             } catch (error) {
                 console.log(error);
             }
         }
 
         recuperarPreguntas()
-    },[preguntas])
-    // console.log(preguntas);
+    },[])
+   
 
     const salir = () =>{
         navigate('/responderexamen');
@@ -78,12 +89,13 @@ function Preguntas(props) {
                     correctas++;
                 }
             }
-            listaRespuestas.push(respuestas);
+           
         }
-
-        alert('Obtuviste ' + correctas + ' respuestas correctas de 5 preguntas');
-        navigate('/responderexamen')
+        
+        cantidadCorrectas = correctas
+        navigate('/examenresultado')
     }
+
     const handleOnChange = e => {
         const {name, value} = e.target;
         setRespuestas({...respuestas, [name]: value})
@@ -91,13 +103,10 @@ function Preguntas(props) {
 
   return (
     <div className='bg-slate-300 w-full'>
-        {/* AGREGAR DIV CON BARRA DESPLAZABLE */}
         <div className='bg-pastel-50 w-3/4 h-9/10 m-auto mt-5 shadow rounded'>
             <div className='border border-2px h-9 bg-white flow-root'>
-                {/* AQUITAR LABEL NOMBRE DEL ALUMNO */}
                 <label className='font-serif ml-2 text-sm mr-80'>Alumno: {props.userName}</label>
                 <label className='font-bold ml-2 text-xl ml-10'>{titleExa}</label>
-                {/* QUITAR BOTONES Y AGREGAR UN BOTÓN DE AGREGAR PREGUNTA */}
                 <button onClick={salir} className='float-right'>
                     <svg className="h-8 w-8 text-black"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/> <line x1="9" y1="9" x2="15" y2="15" />  <line x1="15" y1="9" x2="9" y2="15" /></svg>
                 </button>
@@ -106,11 +115,11 @@ function Preguntas(props) {
                 </button>
             </div>
             <div>
-            {
-                // AGREGAR 2 BOTONES, ELIMINAR Y EDITAR
+            {   
                 preguntas.map((element, index) => {
+                    console.log(element.codigo)
                     return(
-                        <div key={index}>
+                        <div key={element.codigo}>
                             <label className='font-serif ml-2 text-xl'>{element.pregunta}</label>
                             <br></br>
                             <label className='mx-2'>
@@ -128,7 +137,7 @@ function Preguntas(props) {
                         </div>
                     )
                 })
-                }
+            }
             </div>
         </div>
     </div>

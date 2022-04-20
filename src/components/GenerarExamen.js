@@ -19,42 +19,20 @@ function GenerarExamen(props) {
     
     const navigate = useNavigate();
     const valoresIniciales = {
+        id: '',
         pregunta: '',
         opcion1: '',
         opcion2: '',
         opcion3: '',
-        correcta: ''
+        correcta: '',
     }
 
     const [values, setValues] = useState(valoresIniciales);
     const [usuario, setUsuario] = useState(null);
     const [title, setTitle] = useState();
 
-    
-
 
     const handleSubmit = async() => {
-    //     const preguntas = [];
-    //     const datosExamen = [];
-    //     const datosCompletos = [];
-    //     const querySnapshot = await getDoc(collections(db, "Examenes"));
-    //           querySnapshot.forEach((doc) => {
-    //           datosCompletos.push(doc.data());
-    //   });
-    //   console.log(datosCompletos);
-    //   for(var i=0; i<datosCompletos.length; i++){
-    //     datosExamen.push(datosCompletos[i].examen[0]);
-    //     preguntas.push(datosCompletos[i].examen[1]);
-    //     preguntas.push(datosCompletos[i].examen[2]);
-    //   }
-
-    //   console.log('Datos del examen');
-    //   console.log(datosExamen);
-
-    //   console.log('Preguntras');
-    //   console.log(preguntas);
-    //   console.log('Pregunta #1');
-    //   console.log(preguntas[0].pregunta);
       examen = []
       contador = 0;
       navigate('/examenes');      
@@ -69,17 +47,25 @@ function GenerarExamen(props) {
 
 
     const guardar = () => {
-        
-        console.log(contador);
+          var d = new Date().getTime();
+          var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          var r = (d + Math.random() * 16) % 16 | 0;
+          d = Math.floor(d / 16);
+          return (c === 'x' ? r : (r && 0x3 | 0x8)).toString(16);
+          });
+          console.log('IDD')
+          console.log(uuid)
+          values.id = uuid;
+
+
         if(contador===0){
             examen.push({usuario,title})
             examen.push(values);
             contador++;
         }else{
             
-            examen.push(values);
+            examen.push(values)
             contador++;
-            
         }
         limpiar();
         

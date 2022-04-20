@@ -11,6 +11,7 @@ import ResponderExamen from "./components/ResponderExamen";
 import Editar from "./components/Editar";
 import GenerarExamen from "./components/GenerarExamen";
 import Preguntas from "./components/Preguntas";
+import ExamenResultado from "./components/ExamenResultado";
 //VERIFICAR CAMBIOS
 
 export var name = '';
@@ -123,6 +124,7 @@ function App() {
           <Route path='/editar' element={<Editar userName={userName}></Editar>}></Route>
           <Route path='/generarExamen' element={<GenerarExamen userName={userName}/>}></Route>
           <Route path='/preguntas' element={<Preguntas  userName={userName}/>}></Route>
+          <Route path='/examenresultado' element={<ExamenResultado userName={userName}/>}></Route>
       </Routes>
     </div>
   )

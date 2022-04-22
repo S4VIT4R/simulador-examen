@@ -100,6 +100,42 @@ function Preguntas(props) {
         const {name, value} = e.target;
         setRespuestas({...respuestas, [name]: value})
     }
+    
+    const obtenerIntento = async () => {
+        const valor = [];
+        const id = []
+        const longitud = 0;
+        try {
+            const querySnapshot = await getDoc(collections(db, 'Calificaciones'))
+            querySnapshot.forEach((doc) => {
+                if (doc.id === nombreExamen) {
+                    // Metodo para obtener los valores con el formato clave valor
+                    for (var [key, value] of Object.entries(doc.data())) {
+                        id.push(key);
+                        valor.push(value);
+                    }
+
+                }
+            })
+
+            // Obtencion de los datos
+            for(var i=0;i<id.length;i++){
+                console.log("La clave es: " +id[i] + " el valor " + valor[i]);
+            }
+
+
+
+            //longitud = datos.length();
+            for (let index = 0; index < longitud; index++) {
+
+            }
+        } catch (error) {
+            console.log('error ' + error);
+        }
+
+
+
+    }
 
   return (
     <div className='bg-slate-300 w-full'>
